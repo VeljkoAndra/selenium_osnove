@@ -22,4 +22,8 @@ public class CartPage extends BasicPage{
     public boolean areTheItemsAdded () {
         return elementExists(By.className("cart_item"));
     }
+    public boolean doesItemTitleIsPresented () {
+        By by = By.cssSelector("#item_4_title_link .inventory_item_name");
+        return elementExists(by);
+    }
 }

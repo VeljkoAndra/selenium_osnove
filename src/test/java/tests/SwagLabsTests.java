@@ -240,7 +240,19 @@ public class SwagLabsTests extends BasicTest {
         Assert.assertTrue(cartPage.areTheItemsAdded(),
                 "Added items should be presented on the page.");
     }
+    @Test (priority = 21, retryAnalyzer = SwagLabsRetry.class)
+    public void verifyIfTheItemsTitleIsPresented () {
+        String username = "standard_user";
+        String password = "secret_sauce";
 
+        loginPage.clearAndTypeUsername(username);
+        loginPage.clearAndTypePassword(password);
+        loginPage.clickOnLoginButton();
+        inventoryPage.clickOnAddToCartButtonForSauceLabsBackpack();
+        topNavPage.clickOnTheShoppingCartButton();
+        Assert.assertTrue(cartPage.doesItemTitleIsPresented(),
+                "Title of the added item should be visible.");
+    }
 
 
 
