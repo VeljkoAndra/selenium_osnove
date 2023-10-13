@@ -227,7 +227,19 @@ public class SwagLabsTests extends BasicTest {
         leftNavPage.clickOnTheEkisButtonFromMenu();
         leftNavPage.waitForLeftMenuToBeInvisible();
     }
+    @Test (priority = 20, retryAnalyzer = SwagLabsRetry.class)
+    public void verifyIfTheItemsAddedIsPresented () {
+        String username = "standard_user";
+        String password = "secret_sauce";
 
+        loginPage.clearAndTypeUsername(username);
+        loginPage.clearAndTypePassword(password);
+        loginPage.clickOnLoginButton();
+        inventoryPage.clickOnAddToCartButtonForSauceLabsBackpack();
+        topNavPage.clickOnTheShoppingCartButton();
+        Assert.assertTrue(cartPage.areTheItemsAdded(),
+                "Added items should be presented on the page.");
+    }
 
 
 
