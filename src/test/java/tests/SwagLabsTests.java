@@ -1,5 +1,6 @@
 package tests;
 
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import retry.SwagLabsRetry;
@@ -360,7 +361,20 @@ public class SwagLabsTests extends BasicTest {
         Assert.assertTrue(cartPage.getContinueShoppingButton().isDisplayed(),
                 "Button continue shopping should be presented.");
     }
+    @Test (priority = 30, retryAnalyzer = SwagLabsRetry.class)
+    public void verifyIfTheContinueShoppingButtonIsWorking () {
+        String username = "standard_user";
+        String password = "secret_sauce";
 
+        loginPage.clearAndTypeUsername(username);
+        loginPage.clearAndTypePassword(password);
+        loginPage.clickOnLoginButton();
+        inventoryPage.clickOnTheAddToCartButtons();
+        topNavPage.clickOnTheShoppingCartButton();
+        cartPage.clickOnTheContinueShoppingButton();
+        wait    .withMessage("Should be redirected to the products page")
+                .until(ExpectedConditions.urlContains("/inventory.html"));
+    }
 
 
 }
