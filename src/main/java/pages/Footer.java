@@ -16,4 +16,7 @@ public class Footer extends BasicPage{
     public WebElement getTheFacebookButton () {
         return driver.findElement(By.cssSelector(".social_facebook a"));
     }
+    public WebElement getTheLinkedinButton () {
+        return driver.findElement(By.cssSelector(".social_linkedin a"));
+    }
 }
