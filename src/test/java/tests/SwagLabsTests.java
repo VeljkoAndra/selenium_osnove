@@ -215,7 +215,12 @@ public class SwagLabsTests extends BasicTest {
         topNavPage.getTheShoppingCartButton();
         Assert.assertTrue(topNavPage.invisibilityOfNumberItemsInCart());
     }
-
+    @Test (priority = 18, retryAnalyzer = SwagLabsRetry.class)
+    public void verifyIfTheEkisButtonIsPresented () {
+        verifyIfTheHamburgerButtonIsWorking();
+        Assert.assertTrue(leftNavPage.doesEkisButtonExistInMenu(),
+                "Ekis button should be visible in menu");
+    }
 
 
 
