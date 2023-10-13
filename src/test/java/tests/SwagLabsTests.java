@@ -372,7 +372,8 @@ public class SwagLabsTests extends BasicTest {
         inventoryPage.clickOnTheAddToCartButtons();
         topNavPage.clickOnTheShoppingCartButton();
         cartPage.clickOnTheContinueShoppingButton();
-        wait    .withMessage("Should be redirected to the products page")
+        wait
+                .withMessage("Should be redirected to the products page")
                 .until(ExpectedConditions.urlContains("/inventory.html"));
     }
     @Test (priority = 31,retryAnalyzer = SwagLabsRetry.class)
@@ -439,4 +440,21 @@ public class SwagLabsTests extends BasicTest {
         Assert.assertTrue(footer.getTheLinkedinButton().isDisplayed(),
                 "Linkedin button should be presented on the page");
     }
+    @Test (priority = 36, retryAnalyzer = SwagLabsRetry.class)
+    public void verifyIfTheTwitterButtonIsWorking () throws InterruptedException {
+        String username = "standard_user";
+        String password = "secret_sauce";
+
+        loginPage.clearAndTypeUsername(username);
+        loginPage.clearAndTypePassword(password);
+        loginPage.clickOnLoginButton();
+        topNavPage.clickOnTheShoppingCartButton();
+        footer.clickOnTheTwitterButton();
+        driver.navigate().to("https://twitter.com/saucelabs");
+        wait
+                .withMessage("Should be redirected to the sauce labs twitter account")
+                .until(ExpectedConditions.urlToBe("https://twitter.com/saucelabs"));
+
+    }
+
 }
