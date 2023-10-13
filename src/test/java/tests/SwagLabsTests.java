@@ -7,7 +7,7 @@ import retry.SwagLabsRetry;
 public class SwagLabsTests extends BasicTest {
 
     @Test(priority = 1, retryAnalyzer = SwagLabsRetry.class)
-    public void verifyTheUrlOnTheCartPage() {
+    public void verifyTheUrl() {
         String username = "standard_user";
         String password = "secret_sauce";
 
@@ -44,7 +44,7 @@ public class SwagLabsTests extends BasicTest {
                 "Title should be Swag Labs.");
     }
 
-    @Test (retryAnalyzer = SwagLabsRetry.class)
+    @Test (priority = 3, retryAnalyzer = SwagLabsRetry.class)
     public void verifyTheTitleInHeader() {
         String username = "standard_user";
         String password = "secret_sauce";
@@ -61,7 +61,23 @@ public class SwagLabsTests extends BasicTest {
         Assert.assertEquals(topNavPage.getTheTitleInHeader(),
                 "Swag Labs", "Title in header on the Cart Page should be Swag Labs.");
     }
+    @Test (priority = 4, retryAnalyzer = SwagLabsRetry.class)
+    public void verifyIfTheHamburgerMenuButtonIsPresented () {
+        String username = "standard_user";
+        String password = "secret_sauce";
 
+        loginPage.clearAndTypeUsername(username);
+        loginPage.clearAndTypePassword(password);
+        loginPage.clickOnLoginButton();
+
+        Assert.assertEquals(driver.getCurrentUrl(),
+                baseUrl + "/inventory.html",
+                "Should be redirected to inventory page after login.");
+
+        topNavPage.clickOnTheShoppingCartButton();
+        Assert.assertTrue(topNavPage.doesHamburgerMenuButtonExist(),
+                "Menu button should be present on the Cart Page.");
+    }
 
 
 
