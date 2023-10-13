@@ -333,7 +333,20 @@ public class SwagLabsTests extends BasicTest {
         Assert.assertTrue(cartPage.doesRemoveButtonsAreVisible(),
                 "Remove button should be visible.");
     }
+    @Test (priority = 28, retryAnalyzer = SwagLabsRetry.class)
+    public void verifyIfTheRemoveButtonIsWorking () throws InterruptedException {
+        String username = "standard_user";
+        String password = "secret_sauce";
 
+        loginPage.clearAndTypeUsername(username);
+        loginPage.clearAndTypePassword(password);
+        loginPage.clickOnLoginButton();
+        inventoryPage.clickOnTheAddToCartButtons();
+        topNavPage.clickOnTheShoppingCartButton();
+        cartPage.clickOnTheRemoveButtonForBackpack();
+        Assert.assertTrue(!cartPage.doesItemExistAfterRemoving(),
+                "The item should disappear after removing");
+    }
 
 
 

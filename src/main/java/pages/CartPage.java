@@ -66,4 +66,14 @@ public class CartPage extends BasicPage{
     public boolean doesRemoveButtonsAreVisible () {
         return elementExists((By.cssSelector(".cart_item_label button.cart_button")));
     }
+    public WebElement removeButtonForBackpack () {
+        return driver.findElement(By.id("remove-sauce-labs-backpack"));
+    }
+    public void clickOnTheRemoveButtonForBackpack () {
+        removeButtonForBackpack().click();
+    }
+    public boolean doesItemExistAfterRemoving () {
+        By by = By.id("remove-sauce-labs-backpack");
+        return elementExists(by);
+    }
 }
