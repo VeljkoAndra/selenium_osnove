@@ -37,7 +37,9 @@ public class TopNavPage extends BasicPage {
     public boolean doesHamburgerMenuIsEnabled() {
         return getHamburgerMenuButton().isEnabled();
     }
-
+    public boolean doesShoppingCartButtonIsEnabled () {
+        return getTheShoppingCartButton().isEnabled();
+    }
 
 
 
