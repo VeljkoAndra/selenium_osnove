@@ -79,6 +79,21 @@ public class SwagLabsTests extends BasicTest {
                 "Menu button should be present on the Cart Page.");
     }
 
+    @Test (priority = 5, retryAnalyzer = SwagLabsRetry.class)
+    public void verifyIfTheCartIconIsPresented () {
+        String username = "standard_user";
+        String password = "secret_sauce";
 
+        loginPage.clearAndTypeUsername(username);
+        loginPage.clearAndTypePassword(password);
+        loginPage.clickOnLoginButton();
+
+        Assert.assertEquals(driver.getCurrentUrl(),
+                baseUrl + "/inventory.html",
+                "Should be redirected to inventory page after login.");
+        topNavPage.clickOnTheShoppingCartButton();
+        Assert.assertTrue(topNavPage.doesCartIconExist(),
+                "Cart icon should be present on the Cart Page.");
+    }
 
 }
