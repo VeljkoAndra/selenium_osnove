@@ -34,4 +34,8 @@ public class CartPage extends BasicPage{
         By by = By.cssSelector(".cart_item .inventory_item_price");
         return elementExists(by);
     }
+    public boolean doesItemsQuantityIsPresented () {
+        By by = By.cssSelector(".cart_item .cart_quantity");
+        return elementExists(by);
+    }
 }
