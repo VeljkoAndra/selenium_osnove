@@ -486,5 +486,17 @@ public class SwagLabsTests extends BasicTest {
                 .withMessage("Should be redirected to the sauce labs facebook account")
                 .until(ExpectedConditions.urlToBe("https://www.linkedin.com/authwall?trk=bf&trkInfo=AQEj5aRtH8HZbAAAAYsfGhVI6YC-QfKXWLJ-7m1J99ClbXh8_eieR5OUzkFtoFzGEi2reCxtY-iYlB0NfBtL6p_hYjfqvdJzwBzea5Zn32baz3wk3evsByzCqzJZOPp5E1EWtX0=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Fsauce-labs%2F"));
     }
+    @Test (priority = 49, retryAnalyzer = SwagLabsRetry.class)
+    public void verifyTheCopyRightNoticeMessage () {
+        String username = "standard_user";
+        String password = "secret_sauce";
 
+        loginPage.clearAndTypeUsername(username);
+        loginPage.clearAndTypePassword(password);
+        loginPage.clickOnLoginButton();
+        topNavPage.clickOnTheShoppingCartButton();
+        Assert.assertEquals(footer.getTheCopyRightMessage(),
+                "© 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy",
+                "Copyright message is not correct.");
+    }
 }

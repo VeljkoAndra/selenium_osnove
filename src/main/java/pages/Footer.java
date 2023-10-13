@@ -28,4 +28,7 @@ public class Footer extends BasicPage{
     public void clickOnTheLinkedinButton () {
         getTheLinkedinButton().click();
     }
+    public String getTheCopyRightMessage () {
+        return driver.findElement(By.className("footer_copy")).getText();
+    }
 }
