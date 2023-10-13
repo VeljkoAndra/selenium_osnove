@@ -76,4 +76,7 @@ public class CartPage extends BasicPage{
         By by = By.id("remove-sauce-labs-backpack");
         return elementExists(by);
     }
+    public WebElement getContinueShoppingButton () {
+        return driver.findElement(By.id("continue-shopping"));
+    }
 }

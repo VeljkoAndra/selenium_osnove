@@ -347,7 +347,19 @@ public class SwagLabsTests extends BasicTest {
         Assert.assertTrue(!cartPage.doesItemExistAfterRemoving(),
                 "The item should disappear after removing");
     }
+    @Test (priority = 29, retryAnalyzer = SwagLabsRetry.class)
+    public void verifyIfTheContinueShoppingButtonIsPresented () {
+        String username = "standard_user";
+        String password = "secret_sauce";
 
+        loginPage.clearAndTypeUsername(username);
+        loginPage.clearAndTypePassword(password);
+        loginPage.clickOnLoginButton();
+        inventoryPage.clickOnTheAddToCartButtons();
+        topNavPage.clickOnTheShoppingCartButton();
+        Assert.assertTrue(cartPage.getContinueShoppingButton().isDisplayed(),
+                "Button continue shopping should be presented.");
+    }
 
 
 
