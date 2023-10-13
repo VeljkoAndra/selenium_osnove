@@ -129,7 +129,11 @@ public class SwagLabsTests extends BasicTest {
         Assert.assertTrue(topNavPage.doesShoppingCartButtonIsEnabled(),
                 "Shopping cart button is not enabled.");
     }
-
+    @Test (priority = 8, retryAnalyzer = SwagLabsRetry.class)
+    public void verifyIfTheHamburgerButtonIsWorking () {
+        verifyIfTheHamburgerMenuButtonIsEnabled();
+        leftNavPage.waitForLeftMenuToBeVisible();
+    }
 
 
 
