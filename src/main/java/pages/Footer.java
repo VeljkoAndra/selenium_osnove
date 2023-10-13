@@ -25,4 +25,7 @@ public class Footer extends BasicPage{
     public void clickOnTheFacebookButton () {
         getTheFacebookButton().click();
     }
+    public void clickOnTheLinkedinButton () {
+        getTheLinkedinButton().click();
+    }
 }
