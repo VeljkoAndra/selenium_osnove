@@ -184,7 +184,7 @@ public class SwagLabsTests extends BasicTest {
         Assert.assertTrue(leftNavPage.spellingOfAllOptions(),
                 "Spelling of options in menu is not correct.");
     }
-    @Test (retryAnalyzer = SwagLabsRetry.class)
+    @Test (priority = 14, retryAnalyzer = SwagLabsRetry.class)
     public void verifyIfAllItemsOptionIsWorking () {
         verifyIfTheHamburgerButtonIsWorking();
         leftNavPage.clickOnTheAllItemsFromMenuOption();
@@ -192,6 +192,22 @@ public class SwagLabsTests extends BasicTest {
                 baseUrl + "/inventory.html",
                 "Should be redirected to the products page.");
     }
+    @Test (priority = 15, retryAnalyzer = SwagLabsRetry.class)
+    public void verifyIfAboutOptionIsWorking () {
+        verifyIfTheHamburgerButtonIsWorking();
+        leftNavPage.clickOnTheAboutFromMenuOption();
+        Assert.assertEquals(driver.getCurrentUrl(),
+                "https://saucelabs.com/",
+                "Should be redirected to the sauce labs website");
+    }
+
+
+
+
+
+
+
+
 
 
 
