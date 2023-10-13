@@ -200,7 +200,13 @@ public class SwagLabsTests extends BasicTest {
                 "https://saucelabs.com/",
                 "Should be redirected to the sauce labs website");
     }
-
+    @Test (priority = 16, retryAnalyzer = SwagLabsRetry.class)
+    public void verifyIfLogoutOptionIsWorking () throws InterruptedException {
+        verifyIfTheHamburgerButtonIsWorking();
+        leftNavPage.clickOnTheLogoutFromMenuOption();
+        Assert.assertEquals(driver.getCurrentUrl(),
+                baseUrl + "/", "Should be redirected to the login page");
+    }
 
 
 
