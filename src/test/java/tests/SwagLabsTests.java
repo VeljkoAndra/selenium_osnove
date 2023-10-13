@@ -158,7 +158,20 @@ public class SwagLabsTests extends BasicTest {
         Assert.assertEquals(cartPage.getNumberInSpan(),
                 cartPage.getNumberInSpan(), "Numbers should be equal.");
     }
+    @Test (priority = 11,retryAnalyzer = SwagLabsRetry.class)
+    public void verifyTheSubHeaderTitle () {
+        String username = "standard_user";
+        String password = "secret_sauce";
 
+        loginPage.clearAndTypeUsername(username);
+        loginPage.clearAndTypePassword(password);
+        loginPage.clickOnLoginButton();
+
+        topNavPage.clickOnTheShoppingCartButton();
+        Assert.assertEquals(subHeaderPage.getTheSubHeader(),
+                "Your Cart",
+                "Sub-header should be 'Your Cart' on the Cart Page.");
+    }
 
 
 
