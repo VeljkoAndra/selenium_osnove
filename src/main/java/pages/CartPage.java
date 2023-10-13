@@ -38,4 +38,26 @@ public class CartPage extends BasicPage{
         By by = By.cssSelector(".cart_item .cart_quantity");
         return elementExists(by);
     }
+    public List<WebElement> getTheTitlesOfItems () {
+        List<WebElement> titles = driver.findElements(By.className("inventory_item_name"));
+        return titles;
+    }
+    public boolean checkTheTitlesAreClickable () {
+        int numberOfClickable = 0;
+        for (int i = 0; i < getTheTitlesOfItems().size(); i++) {
+            if (getTheTitlesOfItems().get(i).isEnabled()) {
+                numberOfClickable++;
+            }
+        }
+        if (numberOfClickable == getTheTitlesOfItems().size()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public void clickOnTheTitles () {
+        for (int i = 0; i < getTheTitlesOfItems().size(); i++) {
+            getTheTitlesOfItems().get(i).click();
+        }
+    }
 }
