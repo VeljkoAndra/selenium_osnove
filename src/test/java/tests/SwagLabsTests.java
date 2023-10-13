@@ -305,5 +305,19 @@ public class SwagLabsTests extends BasicTest {
         Assert.assertTrue(cartPage.checkTheTitlesAreClickable(),
                 "Title should be clickable.");
     }
+    @Test (priority = 26, retryAnalyzer = SwagLabsRetry.class)
+    public void verifyIfTheItemsTitleIsWorking () {
+        String username = "standard_user";
+        String password = "secret_sauce";
 
+        loginPage.clearAndTypeUsername(username);
+        loginPage.clearAndTypePassword(password);
+        loginPage.clickOnLoginButton();
+        inventoryPage.clickOnTheAddToCartButtons();
+        topNavPage.clickOnTheShoppingCartButton();
+        cartPage.clickOnTheFirstTitle();
+        Assert.assertEquals(driver.getCurrentUrl(),
+                itemPage.SauceLabsBackpackUrl,
+                "Should be redirected on the product page.");
+    }
 }
