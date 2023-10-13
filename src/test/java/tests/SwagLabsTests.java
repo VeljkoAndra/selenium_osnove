@@ -375,6 +375,18 @@ public class SwagLabsTests extends BasicTest {
         wait    .withMessage("Should be redirected to the products page")
                 .until(ExpectedConditions.urlContains("/inventory.html"));
     }
+    @Test (priority = 31,retryAnalyzer = SwagLabsRetry.class)
+    public void verifyIfTheCheckoutButtonIsPresented () {
+        String username = "standard_user";
+        String password = "secret_sauce";
 
+        loginPage.clearAndTypeUsername(username);
+        loginPage.clearAndTypePassword(password);
+        loginPage.clickOnLoginButton();
+        inventoryPage.clickOnTheAddToCartButtons();
+        topNavPage.clickOnTheShoppingCartButton();
+        Assert.assertTrue(cartPage.getCheckoutButton().isDisplayed(),
+                "Button checkout should be presented.");
+    }
 
 }

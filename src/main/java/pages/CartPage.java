@@ -82,4 +82,7 @@ public class CartPage extends BasicPage{
     public void clickOnTheContinueShoppingButton () {
         getContinueShoppingButton().click();
     }
+    public WebElement getCheckoutButton () {
+        return driver.findElement(By.id("checkout"));
+    }
 }
