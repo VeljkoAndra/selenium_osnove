@@ -91,8 +91,13 @@ public class LeftNavPage extends BasicPage {
     public WebElement getEkisButtonFromMenu () {
         return driver.findElement(By.id("react-burger-cross-btn"));
     }
-
-
+    public void waitForLeftMenuToBeInvisible () {
+        wait    .withMessage("Left menu is still visible after closing.")
+                .until(ExpectedConditions.invisibilityOf(getLeftMenu()));
+    }
+    public void clickOnTheEkisButtonFromMenu () {
+        getEkisButtonFromMenu().click();
+    }
 }
 
 
