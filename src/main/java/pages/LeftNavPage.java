@@ -79,7 +79,12 @@ public class LeftNavPage extends BasicPage {
     public void clickOnTheLogoutFromMenuOption () {
         getTheLogoutFromMenuOption().click();
     }
-
+    public WebElement getTheResetFromMenuOption () {
+        return driver.findElement(By.id("reset_sidebar_link"));
+    }
+    public void clickOnTheResetFromMenuOption () {
+        getTheResetFromMenuOption().click();
+    }
 
 
 

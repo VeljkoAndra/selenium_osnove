@@ -40,7 +40,9 @@ public class TopNavPage extends BasicPage {
     public boolean doesShoppingCartButtonIsEnabled () {
         return getTheShoppingCartButton().isEnabled();
     }
-
+    public boolean invisibilityOfNumberItemsInCart () {
+        return !elementExists(By.className("shopping_cart_badge"));
+    }
 
 
 
