@@ -22,4 +22,7 @@ public class Footer extends BasicPage{
     public void clickOnTheTwitterButton () {
         getTheTwitterButton().click();
     }
+    public void clickOnTheFacebookButton () {
+        getTheFacebookButton().click();
+    }
 }
