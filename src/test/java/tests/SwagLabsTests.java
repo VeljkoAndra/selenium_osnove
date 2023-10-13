@@ -388,5 +388,19 @@ public class SwagLabsTests extends BasicTest {
         Assert.assertTrue(cartPage.getCheckoutButton().isDisplayed(),
                 "Button checkout should be presented.");
     }
+    @Test (priority = 32, retryAnalyzer = SwagLabsRetry.class)
+    public void verifyIfTheCheckoutButtonIsWorking () {
+        String username = "standard_user";
+        String password = "secret_sauce";
 
+        loginPage.clearAndTypeUsername(username);
+        loginPage.clearAndTypePassword(password);
+        loginPage.clickOnLoginButton();
+        inventoryPage.clickOnTheAddToCartButtons();
+        topNavPage.clickOnTheShoppingCartButton();
+        cartPage.clickOnTheCheckoutButton();
+        Assert.assertEquals(driver.getCurrentUrl(),
+                checkoutPage.getCheckoutPageUrl(),
+                "Should be redirected to the Checkout page");
+    }
 }
