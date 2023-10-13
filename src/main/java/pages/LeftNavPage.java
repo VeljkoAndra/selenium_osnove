@@ -61,7 +61,12 @@ public class LeftNavPage extends BasicPage {
         }
         return correctSpelling;
     }
-
+    public WebElement getTheAllItemsFromMenuOption () {
+        return driver.findElement(By.id("inventory_sidebar_link"));
+    }
+    public void clickOnTheAllItemsFromMenuOption () {
+        getTheAllItemsFromMenuOption().click();
+    }
 
 
 
