@@ -29,8 +29,11 @@ public abstract class BasicTest {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        CartPage cartPage = new CartPage(driver, wait);
-
+        cartPage = new CartPage(driver, wait);
+        loginPage = new LoginPage(driver, wait);
+        topNavPage = new TopNavPage(driver, wait);
+        inventoryPage = new InventoryPage(driver, wait);
+        leftNavPage = new LeftNavPage(driver, wait);
     }
 
     @BeforeMethod
