@@ -24,6 +24,7 @@ public abstract class BasicTest {
     protected SubHeaderPage subHeaderPage;
     protected ItemPage itemPage;
     protected CheckoutPage checkoutPage;
+    protected Footer footer;
 
     @BeforeClass
     public void setup(){
@@ -40,6 +41,7 @@ public abstract class BasicTest {
         subHeaderPage = new SubHeaderPage(driver, wait);
         itemPage = new ItemPage(driver, wait);
         checkoutPage = new CheckoutPage(driver, wait);
+        footer = new Footer(driver, wait);
     }
 
     @BeforeMethod
